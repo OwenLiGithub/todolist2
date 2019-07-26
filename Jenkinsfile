@@ -9,6 +9,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    chmod +x ./gradlew
                     ./gradlew test
                 '''
             }
@@ -19,6 +20,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    chmod +x ./gradlew
                     ./gradlew build -x test
                 '''
             }
@@ -29,7 +31,9 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo deploy dev
+                    kill $(lsof -t -i:9090)
+                    cp -f build/libs/todolist-0.0.1-SNAPSHOT.jar /todolist-0.0.1-SNAPSHOT.jar
+                    nohup java -jar /todolist-0.0.1-SNAPSHOT.jar  > log.file  2>&1 &
                 '''
             }
         }
