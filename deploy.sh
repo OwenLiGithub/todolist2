@@ -9,4 +9,4 @@ else
       kill -9 $pid
 fi
 cp -f build/libs/todolist-0.0.1-SNAPSHOT.jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar
-java -jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar &
+JENKINS_NODE_COOKIE=donotKillMe nohup java -jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar &
