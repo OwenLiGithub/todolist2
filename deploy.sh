@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 pid=$(lsof -t -i:8080)
 if [ -z "$pid" ]
 then
