@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e
+export BUILD_ID=dontKillMe
 
 pid=$(lsof -t -i:8080)
 if [ -z "$pid" ]
@@ -10,4 +9,4 @@ else
       kill -9 $pid
 fi
 cp -f build/libs/todolist-0.0.1-SNAPSHOT.jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar
-nohup java -jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar &
+java -jar /var/lib/jenkins/todolist-0.0.1-SNAPSHOT.jar &
